@@ -1,0 +1,8 @@
+version: '3'
+services:
+    web:
+        build: .
+        ports:
+            - "2222:22"
+        command: bash -c "bash script.sh"
+
