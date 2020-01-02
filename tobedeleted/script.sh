@@ -8,15 +8,4 @@ echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 echo "MaxAuthTries 3" >> /etc/ssh/sshd_config
 service ssh restart
 service rsyslog start
-LOGFILE=/var/log/auth.log
-OUTPUTFILE=/app/output.txt
-while true
-    do
-        if [ -e $LOGFILE ]; then
-            python3 ip_and_date_parser.py /var/log/auth.log
-        else
-        echo "$LOGFILE does not exist"
-        fi
-    sleep 10
-    echo `cat $OUTPUTFILE`
-    done
+ping google.com

@@ -1,0 +1,9 @@
+Jan  2 23:19:05 4d2961b421d6 sshd[46]: Connection closed by 10.10.101.49 port 54204 [preauth]
+Jan  2 23:19:14 4d2961b421d6 sshd[48]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=10.10.101.49  user=root
+Jan  2 23:19:16 4d2961b421d6 sshd[48]: Failed password for root from 10.10.101.49 port 54206 ssh2
+Jan  2 23:19:20 4d2961b421d6 sshd[48]: Failed password for root from 10.10.101.49 port 54206 ssh2
+Jan  2 23:19:20 4d2961b421d6 sshd[48]: error: maximum authentication attempts exceeded for root from 10.10.101.49 port 54206 ssh2 [preauth]
+Jan  2 23:19:20 4d2961b421d6 sshd[48]: Disconnecting authenticating user root 10.10.101.49 port 54206: Too many authentication failures [preauth]
+Jan  2 23:19:20 4d2961b421d6 sshd[48]: PAM 1 more authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=10.10.101.49  user=root
+Jan  2 23:21:22 4d2961b421d6 sshd[52]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=10.10.101.49  user=root
+Jan  2 23:21:23 4d2961b421d6 sshd[52]: Failed password for root from 10.10.101.49 port 54210 ssh2

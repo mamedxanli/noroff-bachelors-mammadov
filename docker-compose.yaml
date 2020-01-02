@@ -4,5 +4,4 @@ services:
         build: .
         ports:
             - "2222:22"
-        command: bash -c "bash script.sh"
-
+        command: /bin/sh /app/script.sh
