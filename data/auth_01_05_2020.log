@@ -7,3 +7,6 @@ Jan  3 00:01:21 5b729fc37dba sshd[76]: Disconnecting authenticating user root 10
 Jan  3 00:01:21 5b729fc37dba sshd[76]: PAM 1 more authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=10.10.101.49  user=root
 Jan  3 00:22:55 5b729fc37dba sshd[82]: Bad protocol version identification '\003' from 193.188.22.187 port 1098
 Jan  3 21:32:02 5b729fc37dba sshd[83]: Did not receive identification string from 47.106.77.86 port 57212
+Jan  4 09:01:08 5b729fc37dba sshd[84]: Did not receive identification string from 159.203.201.61 port 34410
+Jan  4 14:53:33 5b729fc37dba sshd[85]: Did not receive identification string from 92.118.161.61 port 58750
+Jan  4 16:09:35 5b729fc37dba sshd[86]: Did not receive identification string from 104.152.52.27 port 54166

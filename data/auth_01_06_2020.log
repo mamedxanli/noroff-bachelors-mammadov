@@ -1,0 +1,42 @@
+Jan  3 00:00:55 5b729fc37dba sshd[72]: Connection closed by 10.10.101.49 port 54432 [preauth]
+Jan  3 00:01:14 5b729fc37dba sshd[76]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=10.10.101.49  user=root
+Jan  3 00:01:16 5b729fc37dba sshd[76]: Failed password for root from 10.10.101.49 port 54436 ssh2
+Jan  3 00:01:21 5b729fc37dba sshd[76]: Failed password for root from 10.10.101.49 port 54436 ssh2
+Jan  3 00:01:21 5b729fc37dba sshd[76]: error: maximum authentication attempts exceeded for root from 10.10.101.49 port 54436 ssh2 [preauth]
+Jan  3 00:01:21 5b729fc37dba sshd[76]: Disconnecting authenticating user root 10.10.101.49 port 54436: Too many authentication failures [preauth]
+Jan  3 00:01:21 5b729fc37dba sshd[76]: PAM 1 more authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=10.10.101.49  user=root
+Jan  3 00:22:55 5b729fc37dba sshd[82]: Bad protocol version identification '\003' from 193.188.22.187 port 1098
+Jan  3 21:32:02 5b729fc37dba sshd[83]: Did not receive identification string from 47.106.77.86 port 57212
+Jan  4 09:01:08 5b729fc37dba sshd[84]: Did not receive identification string from 159.203.201.61 port 34410
+Jan  4 14:53:33 5b729fc37dba sshd[85]: Did not receive identification string from 92.118.161.61 port 58750
+Jan  4 16:09:35 5b729fc37dba sshd[86]: Did not receive identification string from 104.152.52.27 port 54166
+Jan  5 03:10:53 5b729fc37dba sshd[87]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=80.226.132.186  user=root
+Jan  5 03:10:55 5b729fc37dba sshd[87]: Failed password for root from 80.226.132.186 port 59954 ssh2
+Jan  5 03:10:55 5b729fc37dba sshd[87]: Connection closed by authenticating user root 80.226.132.186 port 59954 [preauth]
+Jan  5 03:12:18 5b729fc37dba sshd[89]: Bad protocol version identification 'GET / HTTP/1.1' from 122.228.19.79 port 18151
+Jan  5 03:12:38 5b729fc37dba sshd[90]: Connection closed by 122.228.19.79 port 57353 [preauth]
+Jan  5 05:04:26 5b729fc37dba sshd[92]: Invalid user admin from 110.34.0.144 port 50563
+Jan  5 05:04:26 5b729fc37dba sshd[92]: pam_unix(sshd:auth): check pass; user unknown
+Jan  5 05:04:26 5b729fc37dba sshd[92]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=110.34.0.144 
+Jan  5 05:04:29 5b729fc37dba sshd[92]: Failed password for invalid user admin from 110.34.0.144 port 50563 ssh2
+Jan  5 05:04:29 5b729fc37dba sshd[92]: Connection closed by invalid user admin 110.34.0.144 port 50563 [preauth]
+Jan  5 07:23:22 5b729fc37dba sshd[94]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=85.49.172.113  user=root
+Jan  5 07:23:24 5b729fc37dba sshd[94]: Failed password for root from 85.49.172.113 port 64961 ssh2
+Jan  5 07:23:24 5b729fc37dba sshd[94]: Connection closed by authenticating user root 85.49.172.113 port 64961 [preauth]
+Jan  5 08:05:56 5b729fc37dba sshd[96]: Bad protocol version identification '\003' from 45.136.108.65 port 455
+Jan  5 09:09:37 5b729fc37dba sshd[97]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=59.94.43.90  user=root
+Jan  5 09:09:39 5b729fc37dba sshd[97]: Failed password for root from 59.94.43.90 port 50235 ssh2
+Jan  5 09:09:39 5b729fc37dba sshd[97]: Connection closed by authenticating user root 59.94.43.90 port 50235 [preauth]
+Jan  5 10:33:00 5b729fc37dba sshd[99]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=219.79.63.199  user=root
+Jan  5 10:33:01 5b729fc37dba sshd[99]: Failed password for root from 219.79.63.199 port 61383 ssh2
+Jan  5 10:33:02 5b729fc37dba sshd[99]: Connection closed by authenticating user root 219.79.63.199 port 61383 [preauth]
+Jan  5 12:07:10 5b729fc37dba sshd[101]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=171.247.194.132  user=root
+Jan  5 12:07:12 5b729fc37dba sshd[101]: Failed password for root from 171.247.194.132 port 34254 ssh2
+Jan  5 12:07:12 5b729fc37dba sshd[101]: Connection closed by authenticating user root 171.247.194.132 port 34254 [preauth]
+Jan  5 13:58:43 5b729fc37dba sshd[103]: Invalid user admin from 18.188.193.177 port 36936
+Jan  5 13:58:43 5b729fc37dba sshd[103]: pam_unix(sshd:auth): check pass; user unknown
+Jan  5 13:58:43 5b729fc37dba sshd[103]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=18.188.193.177 
+Jan  5 13:58:45 5b729fc37dba sshd[103]: Failed password for invalid user admin from 18.188.193.177 port 36936 ssh2
+Jan  5 13:58:45 5b729fc37dba sshd[103]: Connection closed by invalid user admin 18.188.193.177 port 36936 [preauth]
+Jan  5 13:58:47 5b729fc37dba sshd[105]: Bad protocol version identification '\003' from 185.143.223.55 port 63513
+Jan  5 17:32:35 5b729fc37dba sshd[106]: Bad protocol version identification '\003' from 45.141.87.6 port 2817
