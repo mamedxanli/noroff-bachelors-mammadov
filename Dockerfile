@@ -7,7 +7,8 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app
 ADD . /app
 
+# Installing dependencies and required software
+RUN apt-get update && apt-get install -y net-tools && apt-get install -y iputils-ping && apt-get install -y ssh && apt-get install -y vim && apt-get install -y rsyslog && apt-get install -y sqlite3
 
-RUN apt-get update && apt-get install -y net-tools && apt-get install -y iputils-ping && apt-get install -y ssh && apt-get install -y vim && apt-get install -y rsyslog
-
+# Exposing port 2222 to outside networks
 EXPOSE 2222
