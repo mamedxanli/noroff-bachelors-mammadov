@@ -1,11 +1,11 @@
 version: '3'
 services:
-    web:
+    honeypot:
         build: .
         ports:
             - "2222:22"
         command: /bin/sh /app/script.sh
-    web1:
+    web:
         image: grafana/grafana
         ports:
             - "3000:3000"
