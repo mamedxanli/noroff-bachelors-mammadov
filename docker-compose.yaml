@@ -2,13 +2,20 @@ version: '3'
 services:
     honeypot:
         build: .
+        hostname: honeypot
+        container_name: honeypot
         ports:
             - "2222:22"
-        command: /bin/sh /app/script.sh
+        command: /bin/sh /app/hp_script.sh
     web:
         image: grafana/grafana
+        hostname: grafana
+        container_name: grafana
         ports:
             - "3000:3000"
     db:
         image: influxdb
-
+        hostname: influx
+        container_name: influx
+        env_file:
+           - db-var.env

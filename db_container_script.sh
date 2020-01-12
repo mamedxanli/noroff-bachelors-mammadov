@@ -31,3 +31,5 @@ password = 'root'
 dbname = 'mydb'
 
 myclient = InfluxDBClient(host, port, user, password, dbname)
+influx -database 'honeypot' -execute 'alter retention policy autogen on honeypot duration 5d'
+
