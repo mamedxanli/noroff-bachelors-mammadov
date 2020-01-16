@@ -1,0 +1,3 @@
+python-geoip-python3
+#Geohash - needs to be fixed: rename the package name 
+#to be geohash rather than Geohash and then change __init__.py to import from .geohash

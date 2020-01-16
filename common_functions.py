@@ -1,41 +1,46 @@
 import time
-from datetime
-from cStringIO import StringIO
+from datetime import datetime
 from influxdb import client as influxdb
 import re
 import sys
+import json
+import geoip
+from contextlib import suppress
+import geohash
 
 logfile = sys.argv[1]
 
 
 #TODO: 
-#1. write convert_time function
 #2. finish influx tcp structure builder
 
-def convert_time(timestamp):
-    try:
-        # Add .0 in case that the epoch didn't include it
-        if "." not in timestamp:
-            timestamp = timestamp + ".0"
-        epoch = datetime.datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%S.%f')
-        return epoch
-    except Exception as exc:
-        raise ValueError(f"Exception while building influx tcp structure, transforming the epoch passed into datetime: {exc}.\nUse format: 2019-03-20T00:08:44.883722\n")
-    
+{'ip': '8.8.8.8', 'hostname': 'dns.google', 'city': 'Mountain View', 'region': 'California', 'country': 'US', 'loc': '37.3860,-122.0838', 'org': 'AS15169 Google LLC', 'postal': '94035', 'timezone': 'America/Los_Angeles', 'readme': 'https://ipinfo.io/missingauth'}
 
-def get_ip_epoch(logfile):
-    #reads logfile, parses it and returns epoch and ip
+def get_geolocation(ip):
+    data = geoip.geolite2.lookup(ip)
+    return data.to_dict()
+
+
+def process_input_data(logfile):
+    #reads logfile, parses it and returns epoch, ip, continent, country, location and geohash
     with open(logfile, 'r') as f:
         for line in f:
-            ip = (re.findall(r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}", line))
-            timestamp = line[0:15]
-            epoch = convert_time(timestamp)
-            return epoch, ip
-
-def geolocator(ip):
-    #gets ip address and returns geohash, country, city
-    pass
-
+            try:
+                with suppress(Exception):
+                    ip = str((re.findall(r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}", line)))
+                    epoch = line[0:26]
+                    geodata = get_geolocation(ip[2:-2])
+                    continent = geodata['continent']
+                    country = geodata['country']
+                    location = geodata['location']
+                    latlong = [x.strip() for x in str(location).split(',')]
+                    latitude = latlong[0]
+                    longitude = latlong[1]
+                    geohash_data = geohash.encode(float(latitude[1:]), float(longitude[:0-1]))
+                    print(epoch, ip, continent, country, location, geohash_data)
+                    return epoch, ip, continent, country, location, geohash_data
+            except Exception as exc:
+               raise ValueError(f"Exception while getting geodata: {exc}.")
 
 def build_influx_tcp_structure(measurement: str, epoch: str, tags: dict = {}, fields: dict = {}) -> dict:
     """
@@ -84,3 +89,6 @@ def db_writer(data):
         except Exception as exc:
             raise ValueError(f"Exception while building influx tcp structure: {exc}.")
             time.sleep(5)
+
+main(logfile)
+#get_geolocation('8.8.8.8')

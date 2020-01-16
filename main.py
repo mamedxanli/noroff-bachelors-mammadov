@@ -6,9 +6,7 @@ import time
 
 
 # Set variables
-#iplist = {}
 logfile = sys.argv[1]
-#outputfile = "/app/output.txt"
 
 # Read and parse /var/log/auth.log file in container fetching timestamps and ip addresses attempting to login to SSH daemon
 
@@ -17,7 +15,7 @@ def get_ip_time():
         with open(logfile, 'r') as f:
             for line in f:
                 ip = (re.findall(r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}", line))
-                timestamp = line[0:15]
+                timestamp = line[0:26]
                 return timestamp, ip
         time.sleep(10)
         continue
