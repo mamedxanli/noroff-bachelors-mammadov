@@ -85,11 +85,10 @@ def build_influx_tcp_structure(logfile, measurement: str, epoch: str, tags: dict
 
 def db_writer(logfile, dbname, measurement):
     db_connection = influxdb.InfluxDBClient('influx', '8086', 'admin', 'admin123', dbname)
-    epoch, ip, continent, country, location, geohash_data = process_input_data(logfile)
+    #epoch, ip, continent, country, location, geohash_data = process_input_data(logfile)
     while True:
         try:
-            new_data = build_influx_tcp_structure(logfile, measurement, 
-                epoch, tags, fields)
+            new_data = build_influx_tcp_structure(logfile, measurement)
             db_connection.write_points([new_data])
             continue
         except Exception as exc:
