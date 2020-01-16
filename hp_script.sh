@@ -30,7 +30,7 @@ while true
         # if auth.log file exists
         if [ -e $LOGFILE ]; then
             # run parser script
-            python3 ip_and_date_parser.py /var/log/auth.log
+            python3 db_writer.py '/var/log/auth.log' 'honeypot' 'ssh_honeypot'
         else
         # otherwise print out in console
         echo "$LOGFILE does not exist"

@@ -9,7 +9,8 @@ from contextlib import suppress
 import geohash
 
 logfile = sys.argv[1]
-
+dbname = sys.argv[2]
+measurement = sys.argv[3]
 
 #TODO: 
 #2. finish influx tcp structure builder
@@ -39,11 +40,11 @@ def process_input_data(logfile):
                     longitude = latlong[1]
                     geohash_data = geohash.encode(float(latitude[1:]), float(longitude[:0-1]))
                     print(epoch, ip, continent, country, location, geohash_data)
-                    #return epoch, ip, continent, country, location, geohash_data
+                    return epoch, ip, continent, country, location, geohash_data
                 except Exception as exc:
                     raise ValueError(f"Exception while getting geodata: {exc}.")
 
-def build_influx_tcp_structure(measurement: str, epoch: str, tags: dict = {}, fields: dict = {}) -> dict:
+def build_influx_tcp_structure(logfile, measurement: str, epoch: str, tags: dict = {}, fields: dict = {}) -> dict:
     """
     Builds data structure for Influx. To be used in the TCP port localhost:8086.\n
     This port is the InfluxDB Docker container running.
@@ -56,6 +57,7 @@ def build_influx_tcp_structure(measurement: str, epoch: str, tags: dict = {}, fi
         - tags: Optional: Dict with tags for this measurement. Tags can be used as identifiers or labels. Usually strings to sort data by groups.
     """
     try:
+        
         # value goes into fields, more like a placeholder
         fields["value"] = float(value)
         # Main dictionary
@@ -63,33 +65,36 @@ def build_influx_tcp_structure(measurement: str, epoch: str, tags: dict = {}, fi
             "measurement" : measurement,
             "time" : epoch,
             "ip"   : ip,
+            "continent" : continent,
+            "country" : country,
+            "location" : location,
+            "geohash_data" : geohash_data
         }
         # Nest dictionaries
         data["tags"] = tags
         data["fields"] = fields
         fields = {
             "country" : country,
-            "city" : city,
-            "geohash" : geohash,
+            "location" : location,
+            "geohash_data" : geohash_data,
         }
         #print(data) # Debug
-        print(data)
         return data
     except Exception as exc:
         raise ValueError(f"Exception while building influx tcp structure: {exc}.")
 
-def db_writer(data):
-    dbname = "honeypot"
-    db = influxdb.InfluxDBClient('influx', '8086', 'root', 'root', dbname)
+def db_writer(logfile, dbname, measurement):
+    db_connection = influxdb.InfluxDBClient('influx', '8086', 'admin', 'admin123', dbname)
+    epoch, ip, continent, country, location, geohash_data = process_input_data(logfile)
     while True:
         try:
-            new_data = buildQuery(data["measurement"], datadict["epoch"],
-            datadict["value"], datadict["tags"], datadict["fields"])
-            db.write_points([new_data])
+            new_data = build_influx_tcp_structure(logfile, measurement, 
+                epoch, tags, fields)
+            db_connection.write_points([new_data])
             continue
         except Exception as exc:
             raise ValueError(f"Exception while building influx tcp structure: {exc}.")
             time.sleep(5)
 
-process_input_data(logfile)
-#get_geolocation('8.8.8.8')
+if __name__ == '__main__':
+    db_writer(logfile, dbname, measurement)
