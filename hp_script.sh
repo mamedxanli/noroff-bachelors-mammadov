@@ -24,6 +24,8 @@ service rsyslog start
 LOGFILE=/var/log/auth.log
 # Set output file for Python parser script ip_and_date_parser.py reading atuh.log file and fetching data of interest
 OUTPUTFILE=/app/output.txt
+# Rename Geohash module folder - looks like its buggy and doesnt work with original name
+mv /usr/local/lib/python3.6/dist-packages/Geohash /usr/local/lib/python3.6/dist-packages/geohash
 # start infinite loop
 while true
     do
