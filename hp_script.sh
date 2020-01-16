@@ -26,6 +26,8 @@ LOGFILE=/var/log/auth.log
 OUTPUTFILE=/app/output.txt
 # Rename Geohash module folder - looks like its buggy and doesnt work with original name
 mv /usr/local/lib/python3.6/dist-packages/Geohash /usr/local/lib/python3.6/dist-packages/geohash
+# Fix __init__.py content for geohash module, adding .geohash instead of geohash:
+sed -i "/from geohash import decode_exactly, decode, encode/c\from .geohash import decode_exactly, decode, encode" /usr/local/lib/python3.6/dist-packages/geohash/__init__.py 
 # start infinite loop
 while true
     do
