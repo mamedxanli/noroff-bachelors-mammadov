@@ -16,6 +16,8 @@ echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 echo "MaxAuthTries 3" >> /etc/ssh/sshd_config
 # Restart SSH daemon
 service ssh restart
+#Change Rsyslog timestamp formatting from traditional to high precise
+sed -i "/$ActionFileDefaultTemplate RSYSLOG_TraditionalFileFormat/c\$ActionFileDefaultTemplate RSYSLOG_FileFormat" /etc/resolv.conf
 # Start Rsyslog daemon
 service rsyslog start
 # Set auth.log file location
