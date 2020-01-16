@@ -22,12 +22,13 @@ def get_geolocation(ip):
 
 
 def process_input_data(logfile):
+    regex_value = r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}'
     #reads logfile, parses it and returns epoch, ip, continent, country, location and geohash
     with open(logfile, 'r') as f:
         for line in f:
-            try:
-                with suppress(Exception):
-                    ip = str((re.findall(r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}", line)))
+            with suppress(Exception):
+                try:
+                    ip = str((re.findall(regex_value, line)))
                     epoch = line[0:26]
                     geodata = get_geolocation(ip[2:-2])
                     continent = geodata['continent']
@@ -38,9 +39,9 @@ def process_input_data(logfile):
                     longitude = latlong[1]
                     geohash_data = geohash.encode(float(latitude[1:]), float(longitude[:0-1]))
                     print(epoch, ip, continent, country, location, geohash_data)
-                    return epoch, ip, continent, country, location, geohash_data
-            except Exception as exc:
-               raise ValueError(f"Exception while getting geodata: {exc}.")
+                    #return epoch, ip, continent, country, location, geohash_data
+                except Exception as exc:
+                    raise ValueError(f"Exception while getting geodata: {exc}.")
 
 def build_influx_tcp_structure(measurement: str, epoch: str, tags: dict = {}, fields: dict = {}) -> dict:
     """
@@ -90,5 +91,5 @@ def db_writer(data):
             raise ValueError(f"Exception while building influx tcp structure: {exc}.")
             time.sleep(5)
 
-main(logfile)
+process_input_data(logfile)
 #get_geolocation('8.8.8.8')
