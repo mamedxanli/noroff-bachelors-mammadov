@@ -1,4 +1,4 @@
-# SSH Honeypot as a source of  geolocation intelligence
+# SSH Honeypot as a source of geolocation intelligence
 
 #### By Alakbar Mammadov
 
@@ -172,7 +172,7 @@ Baykara and Das (2015) propose to combine honeypot with Intrusion Detection Syst
 
 Honeypots solve one of the main weaknesses of IDS/IPS systems, providing valuable intelligence information about sources, techniques and tool-sets of attackers. By design, honeypots do not respond to attack, in a contrary mimicking production systems and encouraging attackers to take further actions and reveal as much information about themselves as it possible. Another important advantage of intelligence information provided by honeypots is their potential to be constructed in a way, revealing connection between various attackers and enabling investigators to group them by geography, methodology, tool-sets and techniques utilized. Honeypots combined with IDS/IPS systems have potential to significantly decrease the number of false positive alarms, because almost all traffic witnessed on honeypots is malicious. Depending on the interaction level of honeypot solution being low, middle and high the resulting information will differ by its type and value. Also, honeypot placement on the network will influence the content of intelligence information collected. At the same time, a hybrid of IDS/IPS and honeypot system can be difficult and expensive to implement and manage. Running both systems independently and using data produced by them would make more sense and could be much more cost-effective solution.
 
-Kamboj and Rana (2013) developed Attack Data Collection system using mixed data from vulnerabilities based attack data collection and network intrusion detection systems. With honeypot systems defined as having no production value and no expected activities on, any traffic seen on honeypots by default classified as malicious. Although, not addressing any security issues, honeypots are a great source of valuable intelligence information, given that data collected from them is processed and analyzed. The authors utilized Virtual Box solution as a virtualization platform, Linux as guest OS and Dionaea gateway as a honeypot system. Attack Data Collection system uses basic services including SSH, FTP and HTTP to listen on standard ports and log all attempts to access these services. Attackers ip addresses are extracted from logs using shell and Perl scripts. Beside this, the solution developed uses multi-level detection mechanisms including capture and analysis of network data and network Intrusion Detection based attack data collection. 
+Kamboj and Rana (2013) developed Attack Data Collection system using mixed data from vulnerabilities based attack data collection and network intrusion detection systems. With honeypot systems defined as having no production value and no expected activities on, any traffic seen on honeypots by default classified as malicious. Although, not addressing any security issues, honeypots are a great source of valuable intelligence information, given that data collected from them is processed and analyzed. The authors utilized Virtual Box solution as a virtualization platform, Linux as guest OS and Dionaea gateway as a honeypot system. Attack Data Collection system uses basic services including SSH, FTP and HTTP to listen on standard ports and log all attempts to access these services. Attackers ip addresses are extracted from logs using shell and Perl scripts. Beside this, the solution developed uses multi-level detection mechanisms including capture and analysis of network data and network Intrusion Detection based attack data collection.
 
 Overall aim is to achieve successful correlation of network attack data with OS level attack data. The system classifies events by their destination port numbers, distributes them by timestamps, protocols and according to the methods utilized by attackers. The solution generates tables, charts and graphs using Perl scripts and according to queries formulated by its user. Attack Data Collection system is constructed from various Open Source solutions, collected in one single solution addressing the main issue of intelligence data collection. The main drawback of the system its complexity on configuration side and high level skill demand for researchers trying to reproduce or utilize it. Complexity of security solutions are not to decrease the value of intelligence produced by them but ease of use and operational convenience are important factors influencing their prevalence.
 
@@ -180,7 +180,7 @@ Kim and Kim (2011) propose agent based honeypot solution to gather intelligence 
 
 The proposed solution has its strong sides such as realtime suspicious activities check, centralized management server and segregation of honeynet and production networks using honeywall. At the same time it has dependency on local agents and as a result on utilization of resources on user-end hosts and capabilities of management server identify malicious code. The latter one can be the main drawback and might result in unexpected behavior of the solution failing to identify an attack.  
 
-Valli, Rabadia and Woodard (2015) elaborated on honeypot systems focusing on SSH service. Kippo software written in Python has been utilized for investigation across 2012-2015. The main aim of the project was to identify automated attacks using password lists. Kippo is Python based software emulating SSH service. It is medium interaction honeypot, also emulating artificious file system with artefacts such as .bash_history logilfe and even virtual /proc file system. It utilizes local MySQL database on each honeypot, communicating the data to centralized PostgreSQL database solution. In addition to aggregated database solution, Kippo has integrated ElasticSearch engine and Kibana frontend, enabling user to query databases and visualize various sets of data, create alerts and notifications triggered by anomalies and particular events. Kippo as medium interaction honeypot allows attacker to login and perform some actions such as downloading files. All the activities are logged and artifacts downloaded are stored in special sandbox for future examination. Also, it uses p0f passive fingerprinting utility to examine network traffic from malicious user and to determine her operating system and other crucial information. 
+Valli, Rabadia and Woodard (2015) elaborated on honeypot systems focusing on SSH service. Kippo software written in Python has been utilized for investigation across 2012-2015. The main aim of the project was to identify automated attacks using password lists. Kippo is Python based software emulating SSH service. It is medium interaction honeypot, also emulating artificious file system with artefacts such as .bash_history logilfe and even virtual /proc file system. It utilizes local MySQL database on each honeypot, communicating the data to centralized PostgreSQL database solution. In addition to aggregated database solution, Kippo has integrated ElasticSearch engine and Kibana frontend, enabling user to query databases and visualize various sets of data, create alerts and notifications triggered by anomalies and particular events. Kippo as medium interaction honeypot allows attacker to login and perform some actions such as downloading files. All the activities are logged and artifacts downloaded are stored in special sandbox for future examination. Also, it uses p0f passive fingerprinting utility to examine network traffic from malicious user and to determine her operating system and other crucial information.
 
 Kippo honeynet became a global intelligence network with active nodes in the US, Europe and Asia. Running for several years it has witnessed many important events, influencing security mechanism and tools being developed and implemented across the globe. Kippo was one of the first honeypots catching shift in client OS utilized by attackers in 2012-2015. If Linux Backtrack and Kali were the main (99%) host operating systems used by attackers before 2015, in a later period Putty SSH Windows client’s signature had grown to notable significance. Kippo has rich tools set and various capabilities crucial such as retrieving attack source geolocation intelligence. The solution is customizable and can be expanded to the will of the user. At the same time its operational overhead and resource intensive nature can be considered as main drawbacks. Running medium interaction honeypots imply strict security measures to be taken. Sandboxing, access from honeypot to Internet and considerations regarding attackers being able to login to the honeypot are all pieces of complex and resource demanding solution.  
 
@@ -190,7 +190,7 @@ Honeypots provide users with data intelligence and digital reconnaissance inform
 
 Mairh, Barik, Verma and Jena (2011) surveyed honeypot in network security. The main goal of the paper is to provide an insight into the aspects of utilizing honeypots in hybrid infrastructures with IDS. Traditional network defense mechanisms such as firewalls and IDS are not sufficient in the modern networks. Together with honeypots they will provide better insight into threats and attacks, generating specific intelligence information contributing to better security. The main role of any honeypot is to be compromised in a controlled way in order to produce valuable reconnaissance data. IDS systems enriched with honeypot generated data, can significantly lower the rate of false positive alarms. Also, along with prevention and detection, security systems are expected to provide a response to threats. This capability heavily relies on understanding of attack vector and employed mechanisms. And the best way of drawing conclusions on these matters is by monitoring, watching and researching later on attacker’s actions, techniques and methods. High interaction level honeypots are especially valuable for this matter. They encourage malicious users to reveal their techniques, tricks and tools by providing an experience of production like system.
 
-Next research…...
+Next paper...
 
 #### 2.4 Automation with docker
 
@@ -218,19 +218,19 @@ Container technology is built on the idea of microservices and decoupling variou
 
 Multiple containers still can be run without any centralized management solution, but that would neglate overall idea of automation. During the last 5 years various management solutions, known as Container Orchestration Solutions have been developed and presented on the market. Some of them, like Docker Compose and Kubernetes received wide recognition and became part of different solutions running all over the globe.  
 
-Docker-compose
+Next paper...
 
-Kubernetes
+Next paper...
 
 #### 2.6 Automation with Python and bash scripting
 
 Infrastructure automation alone is one of the building blocks of the modern research concept. Every research aims to solve a particular problem. For this particular research large amounts of data in log files need to be parsed, formatted and processed. Problem of repetitive tasks in computing is addressed by employing scripting or programming. Bash shell scripting for solving relatively small tasks on Linux platforms and Python as a universal cross-platform programming and scripting language are considered as the best fit for the current and similar projects due to their flexibility, support ecosystem, mature documentation and broad user community.
 
-Python
+Next paper...
 
-Bash
+Next paper...
 
-#### 2.7 Data visualisation
+#### 2.7 Data visualization
 
 Professional data analysis implies comprehensive and structured reporting. Visualization front-end is an absolute necessity for large volumes of data in order to present it in a comprehensible format. Almost all modern programming languages offer modules for producing graphs, charts and tables as part of their standard libraries. There are also more sophisticated and well developed platforms solving the problem of data visualization. Wide variety of commercial and Open Source solutions are offering data visualization services.
 
@@ -244,15 +244,19 @@ Nurgaliyev, Aimar and Karavakis (2016) conducted comparative analysis on the 3 m
 
 #### 3.1 Introduction
 
-The research conducted is based on physical infrastructure consisting of LAN and WAN connections, server, firewall and switch. Building a prototype of the solution is necessary as a proof of concept and for working out practical issues of configuration and implementation. 
+The research conducted is based on physical infrastructure consisting of LAN and WAN connections, server, firewall and switch. Building a prototype of the solution is necessary as a proof of concept and for working out practical issues of configuration and implementation.
 
-#### 3.2 Lab environment and toolset
+#### 3.2 Lab environment and technologies employed
 
-The following hardware and software components are utilized for the prototype:
-Cisco Catalyst 3560 48 port switch with IOS image c3560-advipservicesk9-mz.122-37.SE.bin
-Cisco ASA 5510 firewall as a router and Internet gateway with system image asa915-k8.bin
-Cisco 1142n Wireless Access Point with autonomous IOS image ap3g2-k9w7-xx.153-3.JF5
-Lenovo ThinkPad X230 as a server and Docker host machine with Linux Ubuntu 16.04.6 LTS as OS, Docker version 19.03.1, build 74b1e89e8a and Python 3.5.2 and docker-compose version 1.12.0, build b31ff33
+The lab environment is configured as a segregated network, having stable Internet connection and isolated from production network. Lab components are resitting on separate VLAN and restricted from communication to other portions of the internal network by access-lists, configured on the network switch. The following hardware and software components are utilized for the prototype:
+
+- Cisco Catalyst 3560 48 port switch with IOS image c3560-advipservicesk9-mz.122-37.SE.bin
+- Cisco ASA 5510 firewall as a router and Internet gateway with system image asa915-k8.bin
+- Cisco 1142n Wireless Access Point with autonomous IOS image ap3g2-k9w7-xx.153-3.JF5
+- Lenovo ThinkPad X230 as a server and Docker host machine with Linux Ubuntu 16.04.6 LTS as OS
+- Docker version 19.03.1, build 74b1e89e8a
+- Python 3.5.2
+- docker-compose version 1.12.0, build b31ff33
 
 #### 3.2.1 Justification of toolset chosen
 
@@ -390,7 +394,7 @@ INFLUXDB_ADMIN_USER=admin
 INFLUXDB_ADMIN_PASSWORD=admin123
 ```
 
-#### 3.3.2 Grafana front-end container
+#### 3.3.3 Grafana front-end container
 
 The last part of docker-compose.yaml file contains instructions relevant for building and running grafana container, mapping internal TCP port 3000 of container to TCP port 3000 of the host.
 
@@ -403,16 +407,13 @@ The last part of docker-compose.yaml file contains instructions relevant for bui
             - "3000:3000"
 ```
 
-#### 3.3.1 Logical overlay
+#### 3.4 Logical overlay
 
 The logical overlay of containerized solution is shown on the scheme below:
 ![docker-compose](docker-compose.png "Containerized solution overlay")
+
 The logical overlay of the whole prototype infrastructure including hardware elements is shown on the scheme below:
 ![infrastructure](infrastructure.png "Infrastructure overlay")
-
-#### 3.3.2 Hardware and software requirements
-
-#### 3.4 Technologies employed (e.g. docker, python, bash scripting, Grafana)
 
 #### 3.5 Conclusion
 
@@ -428,21 +429,21 @@ Chapter
 ### Chapter 5: Conclusion
 
 5.1 Introduction
-The 
+The
 5.2 Summary of Findings
-The 
+The
 5.3 Accomplishment of Objectives
 5.3.1 Primary Objective
-Propose     
+Propose
 5.3.2 Sub-Objectives
-Explore 
+Explore
 5.4 Conclusions
 qwerty
 5.5 Suggestions for Future Research
 qwerty
 
-
 ### Reference List
+
 Baykara, M., & Das, R. (2015). “A Survey on honeypot technologies used in intrusion detection systems”. Proceedings of 16th ISERD International Conference, 2(November), 14–19. 
 
 Kamboj, R., & Rana, V. (2013). Implementation of Attack Data Collection Incorporating Multi Level Detection Capabilities Using Low Interaction Honeypot. International Journal of Computer Science and Engineering, 2(4), 27–36. 
@@ -461,12 +462,6 @@ Lidong Wang, Guanghui Wang, and Cheryl Ann Alexander (2015), “Big Data and Vis
 
 Mairh, A., Barik, D., Verma, K., & Jena, D. (2011). Honeypot in network security: A survey. ACM International Conference Proceeding Series, 600–605. Accessed on 10.11.2019, available via https://doi.org/10.1145/1947940.1948065 .
 
-
-
-
-
-
-
-
 ### Appendix A –NAME
+
 ANY APPENDICES HERE

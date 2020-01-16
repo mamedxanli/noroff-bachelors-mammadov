@@ -75,4 +75,3 @@ def connect(MCGRP, MCPORT, dblist):
             time.sleep(5)
 
 connect(MCGRP, MCPORT, dblist)
-                                
