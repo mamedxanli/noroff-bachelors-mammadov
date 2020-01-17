@@ -54,7 +54,7 @@ def process_input_data(logfile):
                     all_lines_processed.append(ready_influx_structure)
         return all_lines_processed
 
-def build_influx_tcp_structure(measurement: str, epoch: str, value: float = 1.0, tags: dict = {}, fields: dict = {}) -> dict:
+def build_influx_tcp_structure(measurement: str = "ssh_honeypot", epoch: str, value: float = 1.0, tags: dict = {}, fields: dict = {}) -> dict:
     """
     Builds data structure for Influx. To be used in the TCP port localhost:8086.\n
     This port is the InfluxDB Docker container running.
