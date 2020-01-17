@@ -18,11 +18,11 @@ def get_geolocation(ip):
             data = geoip.geolite2.lookup(ip)
             return data.to_dict()
         except Exception as exc:
-            raise ValueError(f"Exception while building influx tcp structure: {exc}.")            
+            raise ValueError(f"Exception while building influx tcp structure: {exc}.")
 
 def process_input_data(logfile):
     regex_pattern = r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}'
-    regex_value = re.compile(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}')
+    #regex_value = re.compile(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}')
     all_lines_processed = list()
     with open(logfile, 'r') as f:
         for line in f:
@@ -41,16 +41,17 @@ def process_input_data(logfile):
                 longitude = latlong[1]
                 geohash_data = geohash.encode(float(latitude[1:]), float(longitude[:0-1]))
                 output["ip"] = ip
-                output["epoch"] = epoch
                 output["continent"] = continent
                 output["country"] = country
                 output["latitude"] = latitude[1:]
                 output["longitude"] = longitude[:-1]
                 output["geohash_data"] = geohash_data
-                all_lines_processed.append(output)
+                # Split into 2 dictionaries
+                # call build_influx_tcp_structure(epoch=epoch, tags=tags_dict, fields=fields_dict)
+                all_lines_processed.append(build_influx_tcp_structure(epoch=epoch, tags=tags_dict, fields=fields_dict))
         return all_lines_processed
 
-def build_influx_tcp_structure(measurement: str, value: float = 1.0, tags: dict = {}, fields: dict = {}) -> dict:
+def build_influx_tcp_structure(measurement: str = "ssh_honeypot", epoch: str= "",value: float = 1.0, tags: dict = {}, fields: dict = {}) -> dict:
     """
     Builds data structure for Influx. To be used in the TCP port localhost:8086.\n
     This port is the InfluxDB Docker container running.
@@ -63,18 +64,6 @@ def build_influx_tcp_structure(measurement: str, value: float = 1.0, tags: dict 
         - tags: Optional: Dict with tags for this measurement. Tags can be used as identifiers or labels. Usually strings to sort data by groups.
     """
     try:
-        #ip = sys.argv[2]
-        #print(sys.argv[1])
-        #print(sys.argv[1]('ip'))
-        #poch = sys.argv[3]
-        #ontinent = sys.argv[4]
-        #ountry = sys.argv[5]
-        #atitude = sys.argv[6]
-        #longitude = sys.argv[7]
-        #geohash_data = sys.argv[8]
-        # value goes into fields, more like a placeholder
-        #fields["value"] = float(value)
-        # Main dictionary
         """
         data = {
             "measurement" : measurement,
@@ -102,6 +91,11 @@ def build_influx_tcp_structure(measurement: str, value: float = 1.0, tags: dict 
 
 input_data = process_input_data(logfile)
 print(input_data)
+
+# Write to DB
+# create influxdb client...
+
+
 #build_influx_tcp_structure('ssh_honeypot', input_data)
 
 #print(data)
