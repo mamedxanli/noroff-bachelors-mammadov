@@ -1,0 +1,9 @@
+maxminddb-geolite2==2018.703
+python-geoip==1.2
+python-geoip-geolite2==2015.303
+python-geoip-python3==1.3
+simplegeoip==0.2.0
+influxdb==5.2.2
+Geohash==1.0
+
+
