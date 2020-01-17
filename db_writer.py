@@ -16,7 +16,9 @@ measurement = 'ssh_honeypot'
 def get_geolocation(ip):
         try:
             data = geoip.geolite2.lookup(ip)
-            return data.to_dict()
+            if data:
+                return data.to_dict()
+            return {}            
         except Exception as exc:
             raise ValueError(f"Exception while building influx tcp structure: {exc}.")
 
@@ -29,29 +31,30 @@ def process_input_data(logfile):
             if re.findall(regex_pattern, line) == []:
                 continue
             else:
-                output = {}
+                tags_dict = {}
+                fields_dict = {}
                 ip = str(re.findall(regex_pattern, line))[2:-2]
                 geodata = get_geolocation(ip)
-                epoch = line[0:26]
-                continent = geodata['continent']
-                country = geodata['country']
-                location = geodata['location']
-                latlong = [x.strip() for x in str(location).split(',')]
-                latitude = latlong[0]
-                longitude = latlong[1]
-                geohash_data = geohash.encode(float(latitude[1:]), float(longitude[:0-1]))
-                output["ip"] = ip
-                output["continent"] = continent
-                output["country"] = country
-                output["latitude"] = latitude[1:]
-                output["longitude"] = longitude[:-1]
-                output["geohash_data"] = geohash_data
-                # Split into 2 dictionaries
-                # call build_influx_tcp_structure(epoch=epoch, tags=tags_dict, fields=fields_dict)
-                all_lines_processed.append(build_influx_tcp_structure(epoch=epoch, tags=tags_dict, fields=fields_dict))
+                if geodata:
+                    epoch = line[0:26]
+                    continent = geodata['continent']
+                    country = geodata['country']
+                    location = geodata['location']
+                    latlong = [x.strip() for x in str(location).split(',')]
+                    latitude = latlong[0]
+                    longitude = latlong[1]
+                    geohash_data = geohash.encode(float(latitude[1:]), float(longitude[:0-1]))
+                    fields_dict["ip"] = ip
+                    tags_dict["continent"] = continent
+                    tags_dict["country"] = country
+                    fields_dict["latitude"] = latitude[1:]
+                    fields_dict["longitude"] = longitude[:-1]
+                    fields_dict["geohash_data"] = geohash_data
+                    ready_influx_strcuture = build_influx_tcp_structure(epoch=epoch, tags=tags_dict, fields=fields_dict)
+                    all_lines_processed.append(ready_influx_structure))
         return all_lines_processed
 
-def build_influx_tcp_structure(measurement: str = "ssh_honeypot", epoch: str= "",value: float = 1.0, tags: dict = {}, fields: dict = {}) -> dict:
+def build_influx_tcp_structure(measurement: str, epoch: str, value: float = 1.0, tags: dict = {}, fields: dict = {}) -> dict:
     """
     Builds data structure for Influx. To be used in the TCP port localhost:8086.\n
     This port is the InfluxDB Docker container running.
@@ -64,38 +67,21 @@ def build_influx_tcp_structure(measurement: str = "ssh_honeypot", epoch: str= ""
         - tags: Optional: Dict with tags for this measurement. Tags can be used as identifiers or labels. Usually strings to sort data by groups.
     """
     try:
-        """
+        # value goes into fields, more like a placeholder
+        fields["value"] = float(value)
+        # Main dictionary
         data = {
             "measurement" : measurement,
-            #"epoch"       : epoch
-            }
+            "epoch" : epoch,
+        }
         # Nest dictionaries
         data["tags"] = tags
-        tags = {
-            "country" : country,
-            "continent" : continent,
-        }
         data["fields"] = fields
-        fields = {
-            "epoch" : epoch,
-            "ip" : ip,
-            "geohash_data" : geohash_data,
-            "latitude" : latitude,
-            "longitude" : longitude,
-        }
-        print(data) # Debug
-        return data
-        """
+        print("output from influx builder" : data) # Debug
+        #return data
     except Exception as exc:
         raise ValueError(f"Exception while building influx tcp structure: {exc}.")
 
-input_data = process_input_data(logfile)
-print(input_data)
+process_input_data(logfile)
 
 # Write to DB
-# create influxdb client...
-
-
-#build_influx_tcp_structure('ssh_honeypot', input_data)
-
-#print(data)
