@@ -51,7 +51,7 @@ def process_input_data(logfile):
                     fields_dict["longitude"] = longitude[:-1]
                     fields_dict["geohash_data"] = geohash_data
                     ready_influx_strcuture = build_influx_tcp_structure(epoch=epoch, tags=tags_dict, fields=fields_dict)
-                    all_lines_processed.append(ready_influx_structure))
+                    all_lines_processed.append(ready_influx_structure)
         return all_lines_processed
 
 def build_influx_tcp_structure(measurement: str, epoch: str, value: float = 1.0, tags: dict = {}, fields: dict = {}) -> dict:
@@ -77,7 +77,7 @@ def build_influx_tcp_structure(measurement: str, epoch: str, value: float = 1.0,
         # Nest dictionaries
         data["tags"] = tags
         data["fields"] = fields
-        print("output from influx builder" : data) # Debug
+        print("output from influx builder: ", data) # Debug
         #return data
     except Exception as exc:
         raise ValueError(f"Exception while building influx tcp structure: {exc}.")
