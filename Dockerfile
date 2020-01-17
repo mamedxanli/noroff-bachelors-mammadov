@@ -10,7 +10,7 @@ ADD . /app
 # Installing dependencies and required software
 RUN apt-get update && apt-get install -y net-tools && apt-get install -y iputils-ping && apt-get install -y ssh && apt-get install -y vim && apt-get install -y rsyslog && apt-get install -y sqlite3 && apt-get install -y python3-pip
 
-RUN pip3 install -r requiremets.txt
+RUN pip3 install -r requirements.txt
 
 # Exposing port 2222 to outside networks
 EXPOSE 2222
