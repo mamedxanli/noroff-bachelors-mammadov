@@ -50,7 +50,7 @@ def process_input_data(logfile):
                     fields_dict["latitude"] = latitude[1:]
                     fields_dict["longitude"] = longitude[:-1]
                     fields_dict["geohash_data"] = geohash_data
-                    ready_influx_strcuture = build_influx_tcp_structure(epoch=epoch, tags=tags_dict, fields=fields_dict)
+                    ready_influx_structure = build_influx_tcp_structure(epoch=epoch, tags=tags_dict, fields=fields_dict)
                     all_lines_processed.append(ready_influx_structure)
         return all_lines_processed
 
