@@ -11,6 +11,8 @@ services:
         image: grafana/grafana
         hostname: grafana
         container_name: grafana
+        env_file:
+            - grafana-var.env
         ports:
             - "3000:3000"
     db:
