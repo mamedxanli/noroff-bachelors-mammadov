@@ -47,6 +47,10 @@ def parser(logfile):
                     fields_dict["ip"] = ip
                     tags_dict["continent"] = continent
                     tags_dict["country"] = country
+                    tags_dict["ip"] = ip
+                    tags_dict["geohash"] = geohash_data
+                    tags_dict["longitude"] = longitude[:-1]
+                    tags_dict["latitude"] = latitude[1:]
                     fields_dict["latitude"] = latitude[1:]
                     fields_dict["longitude"] = longitude[:-1]
                     fields_dict["geohash_data"] = geohash_data
