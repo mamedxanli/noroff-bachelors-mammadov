@@ -40,5 +40,6 @@ while true
         echo "$LOGFILE does not exist"
         fi
     # wait 10 seconds
+    echo "resetting the content" > /var/log/auth.log
     sleep 10
     done

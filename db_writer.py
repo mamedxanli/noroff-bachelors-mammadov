@@ -89,7 +89,7 @@ def build_influx_tcp_structure(epoch: str, measurement: str = "ssh_honeypot", va
 
 
 def write_to_db(data):
-    print("checking if writer gets data: ", data)
+    #print("checking if writer gets data: ", data)
     db_connection = influxdb.InfluxDBClient('influx', '8086', 'admin', 'admin123', dbname)
     try:
         db_connection.write_points(data)
