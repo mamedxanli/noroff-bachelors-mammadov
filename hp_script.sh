@@ -40,6 +40,6 @@ while true
         echo "$LOGFILE does not exist"
         fi
     # wait 10 seconds
-    echo "resetting the content" > /var/log/auth.log
+    #enable it to prevent auth.log growing too big to process: echo "resetting the content" > /var/log/auth.log
     sleep 10
     done
