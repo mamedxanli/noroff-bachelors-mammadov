@@ -39,7 +39,7 @@ while true
         # otherwise print out in console
         echo "$LOGFILE does not exist"
         fi
-    # wait 10 seconds
-    #enable it to prevent auth.log growing too big to process: echo "resetting the content" > /var/log/auth.log
+    # reset the content of auth.log file and wait 10 seconds
+    echo "resetting the content" > /var/log/auth.log
     sleep 10
     done
