@@ -28,6 +28,9 @@ OUTPUTFILE=/app/output.txt
 mv /usr/local/lib/python3.6/dist-packages/Geohash /usr/local/lib/python3.6/dist-packages/geohash
 # Fix __init__.py content for geohash module, adding .geohash instead of geohash:
 sed -i "/from geohash import decode_exactly, decode, encode/c\from .geohash import decode_exactly, decode, encode" /usr/local/lib/python3.6/dist-packages/geohash/__init__.py 
+#Create /var/log/auth.log file and set permissions
+touch /var/log/auth.log
+chown syslog:adm /var/log/auth.log 
 # start infinite loop
 while true
     do
