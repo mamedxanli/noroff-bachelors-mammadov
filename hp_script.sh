@@ -18,6 +18,9 @@ echo "MaxAuthTries 3" >> /etc/ssh/sshd_config
 service ssh restart
 #Change Rsyslog timestamp formatting from traditional to high precise
 sed -i "/$ActionFileDefaultTemplate RSYSLOG_TraditionalFileFormat/c\$ActionFileDefaultTemplate RSYSLOG_FileFormat" /etc/rsyslog.conf
+#Create /var/log/auth.log file and set permissions
+touch /var/log/auth.log
+chown syslog:adm /var/log/auth.log 
 # Start Rsyslog daemon
 service rsyslog start
 # Set auth.log file location
