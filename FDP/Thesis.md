@@ -50,7 +50,7 @@
     - [3.3.1 Step 1 - Defining SSH Honeypot container](#331-step-1---defining-ssh-honeypot-container)
     - [3.3.2 Step 2 - Running SSH honeypot container using Docker Compose](#332-step-2---running-ssh-honeypot-container-using-docker-compose)
     - [3.3.3 Step 3 - Defining and running Influx DB container  using Docker Compose](#333-step-3---defining-and-running-influx-db-container-using-docker-compose)
-    - [3.3.4 Step 4 - Defining and running Grafana container  using Docker Compose](#334-step-4---defining-and-running-grafana-container-using-docker-compose)
+    - [3.3.4 Step 4 - Defining and running Grafana container using Docker Compose](#334-step-4---defining-and-running-grafana-container-using-docker-compose)
     - [3.3.5 Configuring network firewall](#335-configuring-network-firewall)
     - [3.3.6 Operating the solution](#336-operating-the-solution)
   - [3.4 Conclusion](#34-conclusion)
@@ -83,9 +83,8 @@
   - [5.1 Introduction](#51-introduction)
   - [5.2 Summary of Findings](#52-summary-of-findings)
   - [5.3 Accomplishment of Objectives](#53-accomplishment-of-objectives)
-    - [5.3.1 Primary Objective](#531-primary-objective)
-    - [5.3.2 Sub-Objectives](#532-sub-objectives)
-    - [5.3.3 Accomplishment](#533-accomplishment)
+    - [5.3.1 Objective](#531-objective)
+    - [5.3.2 Accomplishment](#532-accomplishment)
   - [5.4 Conclusions](#54-conclusions)
   - [5.5 Suggestions for Future Research](#55-suggestions-for-future-research)
 - [Reference List](#reference-list)
@@ -155,9 +154,9 @@
 
 ## Abstract
 
-Threat intelligence becomes a crucial part of IT infrastructure defence strategy. The research has demonstrated that one of the potential uses of Threat Intelligence data can significantly contribute in overall security of an infrastructure by using geolocation data and calculating geographiscal coordinates of a potential attacker. This work aims to address multiple issues, developing comprehensive solutuon to gather and process all the necessary data in order to provide geographical location of potentially malicious actors, trying to gain access to certain resources published on the Internet.
+Threat Intelligence has become a crucial part of mature IT infrastructure defense strategies. Research demonstrates that one of the potential uses of Threat Intelligence data can significantly contribute to overall security of an organization’s infrastructure by using geolocation data and calculating geographical coordinates of a potential attacker. This study aims to address multiple issues, developing an easily deployable solution to gather and process all the necessary data in order to provide geographical location of potentially malicious actors, trying to gain access to certain resources published on the Internet.
 
-Based on the literature review, a hybrid solution incorporating the best of similar solutions built so far was developed. Theoretical model and a proof of concept prototype have been proposed in this work. The overall result shows visualized Threat Intelligence geomap and malicous activities statistics, providing important information for Information Technology security professionals. Further research and potential enhancements are proposed to strengthen the solution.
+Based on a literature review, a hybrid solution incorporating some of the most advantageous aspects of similar solutions built so far was proposed. A theoretical model was proposed, supported by the development of a proof of concept prototype. The overall result shows visualized Threat Intelligence geomap and malicious activities statistics, providing important information for Information Technology security professionals.
 
 <div style="page-break-after: always;"></div>
 
@@ -183,7 +182,11 @@ This section provided some background information explaining current status of i
 
 ### 1.2 Problem Statement
 
+---
+
 Threat Intelligence has emerged as a key element within IT security and infrastructure defense. Various tools, techniques and procedures are deployed within organizations to utilize the benefits of Threat Intelligence. However, there exists a lack of easily deployable solutions with the ability to visualize specific attack source data.
+
+---
 
 ### 1.3 Research objectives
 
@@ -196,11 +199,12 @@ The primary objective of this study is to develop an easily deployable sensor so
 ---
 
 To achieve the primary objective, a range of sub-objectives need to be achieved:
-Explore intelligence gathering solutions, specifically looking at honeypots and the  integration of various platforms and visualization tools.
 
-Develop a Docker based honeypot solution which listens for network traffic on SSH Port 22, then logs source IP information and visualizes geographic attack data for threat analysis.
+- Explore intelligence gathering solutions, specifically looking at honeypots and the integration of various platforms and visualization tools.
 
-Analyze intelligence data over a period and determine the viability     of the proposed solution.
+- Develop a Docker based honeypot solution which listens for network traffic on SSH Port 22, then logs source IP information and visualizes geographic attack data for threat analysis.
+
+- Analyze intelligence data over a period and determine the viability of the proposed solution.
 
 ### 1.4 Research Approach
 
@@ -232,7 +236,9 @@ In order to avoid a deviation from the main focus, the scope of work on the seco
 
 This chapter provides background information on information security risks, and the challenges faced in threat intelligence. This led to a definition of the problem and proposed objectives to address it. The next chapter will review the literature and previous research, relevant to this study. It explores topics, such as gathering and using cyber intelligence information in a combat with threats, honeypots as a valuable asset in gathering threat intelligence, and finally data visualization as an important tool to present and comprehend the data of interest.
 
-Chapter 3 will explore the theoretical architecture of the proposed proof of concept prototype. A high-level logical network and the system model is explained. Chapter 3 provides a sketch of the SSH service model that is advertised on the internet and serves the role of an online trap. Also, it defines the structure of Docker containers, running other components such as database and visualization front-end. Proof of concept prototype and practical details of each component is provided in Chapter 4. Data collection and analysis, the visualization front-end and problems experienced along with the development process are reflected in this chapter. The final chapter discusses the accomplishment of the objectives, summary of findings and proposes future research direction. Chapter 5 concludes the study and provides a final word on the results.
+Chapter 3 will explore the theoretical architecture of the proposed proof of concept prototype. A high-level logical network and the system model is explained. Chapter 3 provides a sketch of the SSH service model that is advertised on the internet and serves the role of an online trap. Also, it defines the structure of Docker containers, running other components such as database and visualization front-end.
+
+Proof of concept prototype and practical details of each component is provided in Chapter 4. Data collection and analysis, the visualization front-end and problems experienced along with the development process are reflected in this chapter. The final chapter discusses the accomplishment of the objectives, summary of findings and proposes future research direction. Chapter 5 concludes the study and provides a final word on the results.
 
 ### 1.7 Conclusion
 
@@ -266,7 +272,7 @@ In 2019 IBM Security by IBM Global Services released the Advanced Persistent Thr
 - 71% of attacks on healthcare systems originate from insiders.
 - For communications, retail and manufacturing 90% of attacks come from the outside.
 
-All these numbers and statistics are generated based on TI analysis. According to the latest reports, by 2022 the number of enterprises using TI will double (Bitdefender, 2019). From the above it is clear that cyber threats have not subsided over the past years and instead keep evolving. Individuals, organizations and governments are therefore required to evolve with these threats in their efforts to protect their information assets. The next section explores the role and importance of honeypots in data collection, attracting malicious actors and gathering intelligence data
+All these numbers and statistics are generated based on TI analysis. According to the latest reports, by 2022 the number of enterprises using TI will double (Bitdefender, 2019). From the above it is clear that cyber threats have not subsided over the past years and instead keep evolving. Individuals, organizations and governments are therefore required to evolve with these threats in their efforts to protect their information assets. The next section explores the role and importance of honeypots in data collection, attracting malicious actors and gathering intelligence data.
 
 ### 2.3 Gathering Intelligence through Honeypots
 
@@ -498,8 +504,11 @@ This section proposed a potential model for Honeypot solution on the level of co
 ##### Figure 3.3 Network Model
 
 A stable internet connection which is isolated from the production network, in the case of shared hardware, is key to this honeypot solution. Figure 3.3 illustrates the logical network topology, such a solution would require in its most basic form. In the current model, a Cisco firewall and Cisco switch are chosen as network hardware due to the reliability, granular configuration potential and general reputation of Cisco network solutions. Although, it is not an absolute requirement to implement Cisco devices for the purpose of this solution, as it is meant to be deployable in any environment. Almost any network firewall and switch can be used for the same purpose.
-The firewall installed on the edge of the network would have TCP port 2222 forwarded to the Ubuntu host on the internal network. This way all the traffic arriving on TCP port 2222 would be forwarded to the machine hosting the SSH honeypot. Additionally, a firewall rule allowing communication from the outside network to inside on TCP port 2222 has to be configured. Otherwise, the firewall will stop the traffic flow from the outside network to inside.  
+
+The firewall installed on the edge of the network would have TCP port 2222 forwarded to the Ubuntu host on the internal network. This way all the traffic arriving on TCP port 2222 would be forwarded to the machine hosting the SSH honeypot. Additionally, a firewall rule allowing communication from the outside network to inside on TCP port 2222 has to be configured. Otherwise, the firewall will stop the traffic flow from the outside network to inside.
+
 The switch is a next-hop on the internal network. The solution does not require any specific switch configuration if the physical network is not shared. If the switch is shared and the same hardware participates in networking operations other than the purpose of the SSH honeypot solution, then additional isolation on the network level implementing segmentation might be necessary (Cisco, 2019).
+
 The Ubuntu host is the recipient of all SSH Honeypot traffic on the physical level. To forward this traffic to the relevant participants, the Docker host has to have port forwarders configured on the Docker container level. Normally port forwarding rules for containers are defined in two places:
 
 - Dockerfile; and
@@ -603,6 +612,7 @@ At this stage SSH honeypot container is up and running. It listens to incoming c
 #### 3.3.3 Step 3 - Defining and running Influx DB container  using Docker Compose
 
 Python script reads and parses SSH authentication log, extracting timestamp and IP of the hosts, attempting to login to the SSH Honeypot. This data needs to be stored. As such, the Python solution creates a dictionary and writes the data to Influx DB, running in a database container. This database will specifically store timestamp, country, continent, longitude, latitude and geohash for each correlated IP address.
+
 Database container is defined in “docker-compose.yaml” with the following settings:
 
 ```
@@ -616,7 +626,7 @@ Database container is defined in “docker-compose.yaml” with the following se
 
 It uses environment variables defined in “db-var.env”, creates "honeypot" DB and sets username and password for administrator. At this stage Influx DB is ready to accept data sent from the Python application running on the Honeypot container. It is also ready to serve the data stored to the front-end solution, querying it and visualizing the data. The next step describes Grafana -  the front-end solution, responsible for data visualization.
 
-#### 3.3.4 Step 4 - Defining and running Grafana container  using Docker Compose
+#### 3.3.4 Step 4 - Defining and running Grafana container using Docker Compose
 
 The final part of “docker-compose.yaml” file contains instructions relevant for building and running Grafana container, mapping internal TCP port 3000 of container to TCP port 3000 of the host. Grafana creates the frontend which users will access to view and analyze the collected data. Port mapping makes Grafana web interface available to users, connecting from other computers.
 
@@ -625,6 +635,8 @@ The final part of “docker-compose.yaml” file contains instructions relevant 
         image: grafana/grafana
         hostname: grafana
         container_name: grafana
+        env_file:
+            - grafana-var.env
         ports:
             - "3000:3000"
 ```
@@ -687,7 +699,7 @@ The previous chapter proposed a theoretical architecture model for a SSH honeypo
 
 At this stage, the prototype discussed in Chapter 3 has been fully functioning and collecting data for a period of 4 weeks. The code, partially presented in Chapter 3, was expanded to automate to the maximum the process of building the SSH Honeypot. After a month of operating the solution, it was found that the solution does not require any additional administrative effort and behaves as expected, therefore limiting the requirement of human interaction. This section will explore the prototype in its final form looking at the required user side pre-configuration for the web-interface, and fetching data from the database.
 
-Figure 4.1 illustrates the login screen of the Grafana web-interface, available on https://docker-host:3000 , where “docker-host” is the IP address of the computer hosting Docker containers. 
+Figure 4.1 illustrates the login screen of the Grafana web-interface, available on https://docker-host:3000 , where “docker-host” is the IP address of the computer hosting Docker containers.
 
 ![GrafanaLogin](4.1.png "Grafana login")
 
@@ -746,7 +758,6 @@ As seen from the graph, the geographical location of connection attempts made is
 
 ##### Figure 4.8 Login attampts made from China
 
-
 Russia seems to be partly interested in the SSH Honeypot as it is ignoring it from time to time, as it is shown in Figure 4.9.
 
 ![RussiaAttempts](4.9.png "Russia is part-time involved in SSH login attempts")
@@ -787,6 +798,8 @@ Grafana query building this output is shown in Figure 4.13.
 
 ##### Figure 4.13 Grafana query to show the number of hits
 
+The query above fetches the total number of IP entries during the time interval specified. This number equals the total number of hits, assuming all login attempts on the SSH Honeypot are malicious. As it is shown in Figure 4.12, during the time interval of 4 weeks, there were more than 643 000 attempts on SSH Honeypot made. Now, it is time to take a closer look at the next visualization, showing a real-time global map of attempts on the solution.
+
 #### 4.3.3 Global attack map
 
 Figure 4.14 reflects the geographical map of sources where login attempts were made from during the specified time interval. In this case it illustrates 4 weeks’ worth of data, with green dots representing less than 10 attempts, orange for more than 10 and less than 100 attempts, and red for more than 100 attempts.
@@ -821,7 +834,7 @@ The prototyping stage assumes a lot of experimenting and sometimes, especially i
 
 The takeaway lesson from the prototyping stage was the importance of keeping track of all steps taken. Prototyping implies experimenting and any unmanaged deviations from the initial plan might result in time losses. Therefore, a thorough record of all the various attempts and results is the best assistant for the operational phase, when troubleshooting and problem-solving are part of daily routine.
 
-Finally, the operational stage taught some lessons as well. Although the software solution might be ready for a project, hardware requirements are not to be undermined. Any miscalculation related to resources could potentially result in downtime. In this case, shortage of storage on the physical computer caused an outage of a few hours. Therefore, the hardware in the solution should match the desired operational functionality..
+Finally, the operational stage taught some lessons as well. Although the software solution might be ready for a project, hardware requirements are not to be undermined. Any miscalculation related to resources could potentially result in downtime. In this case, shortage of storage on the physical computer caused an outage of a few hours. Therefore, the hardware in the solution should match the desired operational functionality.
 
 ### 4.5 Conclusion
 
@@ -833,57 +846,69 @@ This chapter reviewed the operational stage of the solution. It discussed proof 
 
 ### 5.1 Introduction
 
-This chapter will give a high-level overview on the problem and proposed solution. All the findings will be summarized and reviewed. Accomplishment of objectives and sub-objectives is explored in this chapter. Final conclusion on the research and its results is yet another discussion point. The chapter is summarized by final suggestions on the future work.
+Cyber security has become an integral management consideration in organizations all over the world. Data-driven businesses, online commerce, organizations having heavy if not complete dependency on IT infrastructure have become an important part of the global economy and security of this infrastructure entering as their Achilles' heel, if not addressed adequately. With more operations performed online, many businesses and organizations turned into attractive targets for cyber criminals. Security cannot be based only on a defensive doctrine anymore. it is necessary to take a proactive approach.
+
+This study therefore investigated cyber threat intelligence as one measure against these evolving cyber threats, but beyond this, exploring the options available for organizations to implement cost effective and easily deployable solutions, such as honeypots, to gather intelligence data and better prepare themselves against exploitation.
+
+This chapter will conclude this study by summarizing the main findings and discussing how the objective of this study was addressed. Furthermore, the contribution from this study will be highlighted. Lastly, some suggestions for future research will be made before sharing some final words in concluding this study.
 
 ### 5.2 Summary of Findings
 
-This research aimed to accomplish a number of objectives, addressing a specific problem. Among several findings, contributing to the overall result there are few worse to mention specifically.  
+This study set out to address a specific problem by achieving various objectives. In doing so, this study made numerous conclusions along the way which contributed to the outcome. Notably, the following stemmed out of this study.
 
-Docker has appeared to be an extremely flexible and powerful virtualization solution. Its highly configurable nature and impressive performance put it far ahead of any other virtualization solutions. A tiny footprint is another advantage, making container technology a platform of choice for research and development projects, although not restricting to them.
+Literature review within Chapter 2 indicated that malicious actors are growing stronger, adding new technologies, skills and techniques under their belts. Cyber attacks can cause devastating damage, threatening the global economy and public security. Cyber Threat Intelligence (TI) data collection and analysis is of absolute necessity for any successful business strategy. Honeypots attract malicious actors and help to gather valuable information about their techniques and potential. Using honeypot collected data as an integral part of IPS systems contributes significantly in their efficiency and potential to mitigate cyber threats.
 
-Software packages used for calculating the geolocation of a host from an IP address rely heavily on back-end databases. Not all the IP addresses can be precisely mapped to a geolocation due to outdated entries in databases it is checked against. Although, for the majority of cases this mapping is accurate enough, this fact needs to be taken into the consideration.
+Chapter 2 additionally outlined how SSH is one of the most attractive protocols to attack due to its main purpose - remote system control and management. SSH Honeypots are interesting targets to attack and explore for almost any malicious actor. Building an SSH Honeypot system which is easy to set up and use involves a certain level of automation. Furthermore, it was determined that Docker is a light, efficient and free solution, fitting perfectly into the honeypot system architecture. Python and Linux shell scripting are another two components solving problems of manual configuration.
 
-The prototype built in Chapter 4 revealed other interesting findings as soon as it went online. Despite the fact that SSH listener was published on the Internet on non-standard port TCP 2222, it almost immediately attracted attention of potential attackers. Within the first 6 hours a number of attempts to login and gain access have been made from US, Russia and China. This is a good indicator of the scale of scanning, performed by malicious actors on the Internet.
+InfluxDB is a database of choice for time-series oriented applications. Chapter 2 highlighted that data visualization can be done in many different ways and employing various tools available on the market. Grafana is one solution to address the problem of ready user interface, easy to integrate and adapt to necessary requirements. The combination of the solutions mentioned seems to be a good match for building a complete application to collect, process, visualize and analyze TI data, revealing geographical location of malicious actors.
+
+Chapter 3 outlined the desired functionality for the solution to be built. General workflow and theoretical honeypot architecture model have been defined in this chapter. SSH honeypot has been chosen as a collector of TI data. Docker is proposed as a virtualization and automation platform. Docker Compose is considered as an orchestration solution. Network and host configurations are kept as close to default as possible with only minimum necessary alterations to forward traffic from perimeter router to the SSH listener on the honeypot container. Following the theoretical architecture, proof of concept prototype has been built and presented. In order to explain the setup, step by step instructions are offered starting with the definition of Docker container and flowing through the necessary routines to have the complete solution up and running.
+
+The Chapter 4 investigates the performance of the actual solution, running as a proof of concept prototype. Configuration of Grafana front-end is a straightforward process. Grafana offers a great deal of pre-built tools and third-party plugins helping to visualize the data of interest within minutes. Graphs and maps are intuitive to configure, generously offering various ways to get the expected output. There were only two graphs and one map configured for the purpose of this work. Although, many more different graphs and other visualization options are available for the same set of data.
 
 ### 5.3 Accomplishment of Objectives
 
-#### 5.3.1 Primary Objective
+#### 5.3.1 Objective
 
-The primary objective of this study is to develop an easily deployable sensor solution, to gather and visualize geolocation intelligence on possible threats.
+The primary objective of this study involved developing an open source, cost effective and easily deployable sensor solution to gather and visualize geolocation intelligence around possible cyber threats. To achieve this objective, numerous sub-objectives had to be accomplished. These included:
 
-#### 5.3.2 Sub-Objectives
-
-In order to accomplish the main objective, a few sub-objectives were set and accomplished, such as:
-
-- Explore intelligence gathering solutions, specifically looking at honeypots and the  integration of various platforms and visualization tools.
+- Explore intelligence gathering solutions, specifically looking at honeypots and the integration of various platforms and visualization tools.
 
 - Develop a Docker based honeypot solution which listens for network traffic on SSH Port 22, then logs source IP information and visualizes geographic attack data for threat analysis.
 
 - Analyze intelligence data over a period and determine the viability of the proposed solution.
+  
+The first of these sub-objectives was to explore intelligence gathering solutions with a specific focus on honeypots and integration between various platforms and visualization tools. Consequently, this sub-objective was achieved in Chapter 2. The literature review conducted on the topic, covered a broad range of research in this domain. Conclusions drawn from the Chapter 2 explored various solutions involved directly in intelligence collection and some underlying technologies, helping to bind separate tools in one single bundle.
 
-#### 5.3.3 Accomplishment
+Chapter 3 addressed the second sub-objective, which was to develop an easily deployable SSH honeypot, collecting and processing intelligence data, and visualizing it. A theoretical model and proof of concept prototype were proposed in this chapter to provide a possible means to this end.
 
-The primary objective of the study was achieved by developing a complete solution, consisting of multiple components, serving the purpose. First component built is the data collector, a honeypot solution attracting malicious actors to make their attempts to login. The second component is a Python application, parsing the data of interest, formatting it and adding to a database. The next component is responsible for data visualization, fetching the data from the database and visualizing it. All the components mentioned are wrapped into a Docker container solution with some elements of orchestration. Docker bundles all components into one single package, requiring very little interaction from a user in order to have it running. The primary objective was successfully accomplished with no deviations from the initial plan.
+Lastly, the third and final sub-objective was met, which was to analyze threat intelligence data visualized and determine if the proposed solution has provided the expected results. Chapter 4 discussed this in detail and highlighted some data that could be of interest to those who deal with threat intelligence as a proactive defense mechanism.
 
-Sub-objectives of the study were accomplished also according to initial planning. Literature research explores various existing solutions and previous work on the matter. Honeypots, virtualization platforms, visualization solutions and potential for integration of these components were reviewed through the literature research, emphasizing strong sides of previous attempts and looking for a room for improvements.
+In summary, these three sub-objectives collectively addressed the primary objective of this study. A theoretical architecture, accompanied by a working deployable and scalable honeypot TI solution that could be replicated in any environment and expanded to fit the needs of an organization, was delivered.
 
-Docker container solution was successfully employed for the research. Attempt to make the most of Docker's powerful and flexible structure has been made. Different components were gathered and grouped under multiple containers. Docker Compose orchestration tool provided an abstraction layer, wrapping multiple containers in one single infrastructure, running the solution, collecting and processing data, and finally visualizing the end product.
+#### 5.3.2 Accomplishment
 
-The last sub-objective was accomplished by analyzing the data over a period of time and drawing consecutive conclusions (Chapter 5, 5.2 Summary of Findings).
+The first sub-objective was accomplished by collecting and analyzing data on previous work and existing solutions. The gathered information contained details on specific technologies and their combination, such as honeypots, Docker automation and orchestration tools, and Grafana data visualization platform.
+
+The second sub-objective was accomplished by employing Docker and Docker Compose solutions to build a set of container images with all the tools embedded and configured automatically during the deployment. A Python application has been developed to process the data collected by SSH honeypot, and write data of interest to the InfluxDB database and visualize it after the Grafana front-end solution.
+
+The third sub-objective was accomplished in Chapter 4 showing specific graphs and the map, visualizing geolocation information of malicious actors, making login attempts on the SSH honeypot.  
+
+The primary objective of the study was achieved by developing a complete solution, consisting of multiple components, serving the purpose.
 
 ### 5.4 Conclusions
 
-The final conclusion on the research is that sensors and honeypot solutions published on the Internet are great sources of Threat Intelligence data, enabling interested parties to collect, analyze and conclude on it. Geolocation data, calculated from TI raw data helps to understand better malicious activities on the global Internet during different events, time periods and specific incidents. Malicious actors hunting for prey on the Internet have specific interests, more or less tied to their geography. Revealing the scale of attacks and their vectors and linking them to specific geographical locations helps to obtain valuable intelligence information, assisting to draw further conclusions, improve security strategies and defence mechanisms.
+Sensors and honeypot solutions freely available on the Internet are great sources of Threat Intelligence data, enabling interested parties to collect, analyze and draw conclusions in order to assist in cyber defenses. Geolocation data, calculated from raw TI data helps to understand better malicious activities on the global Internet during different events, time periods and specific incidents. Malicious actors hunting for prey on the Internet have specific interests, more or less tied to their geography. Revealing the scale of attacks and their vectors and linking them to specific geographical locations help to obtain valuable intelligence information, assisting to draw further conclusions, improve security strategies and defense mechanisms.
 
-Another important conclusion is that despite continuous efforts by academic researchers, commercial parties and Open Source enthusiasts, there is a big potential for improvement of existing solutions and developing new ones. The market still lacks affordable generic TI solutions providing geolocation intelligence that are easy to deploy and operate. Demand on TI solutions, having potential to be paired with other security technologies, is growing. More research and attempts to convert existing solutions to effective tools to be seen in the years coming.
+Furthermore, despite continuous efforts by academic researchers, commercial parties and Open Source enthusiasts, there is a big potential for improvement of existing solutions and developing new ones. The market still lacks affordable generic TI solutions providing geolocation intelligence that are easy to deploy and operate. Demand on TI solutions, having potential to be paired with other security technologies, is growing. More research and attempts to convert existing solutions to effective tools to be seen in the years coming.
 
 ### 5.5 Suggestions for Future Research
 
-This work could not possibly answer all the questions related to the area of research. By achieving the main and subsequent objectives and addressing a particular problem, it opens new opportunities for further work on the area. One of the topics for future research could be calculating more precise geolocation information by implementing and maintaining a local geodata database. The database should be cross-checking and updating with similar existing databases for more precise data. Application layer, maintaining the database has to have a logic for discarding fake or outdated information and committing the best data available at the moment of processing.
+Future research is required to expand on the work performed as this study could not possibly address all the aspects of threat intelligence and scale to all the needs of the cyber security community. However, having achieved the primary and sub-objectives and addressing the defined problem, which essentially forms part of a much bigger picture, it opens new opportunities for further work on the area. One of the topics for future research could be calculating more precise geolocation information by implementing and maintaining a local geodata database. The database would have to be cross-checking and updating with similar existing databases for more precise data.
 
 Another relevant area for future research could be integration of the proposed TI solution with IPS systems, taking actions on specific metrics and alerts triggered by TI data. This can be a complicated task due to the probability of a high amount of false-positives, triggering unnecessary actions on the IPS side. That implies high-accuracy tuning of the TI solution and IPS system, to avoid noise and false-positive alerts.
 
-The last suggestion for a future work is adding static reporting capabilities to the proposed TI solution. To address it, a number of filters and report generating software modules have to be added to the Python application server. Python programming language has a variety of available modules, generating PDF and many other file formats. Some adaptation of third-party software modules might be required in order to accomplish this task.
+The final suggestion for future work is to add static reporting capabilities to the proposed TI solution. To address it, a number of filters and report generating software modules have to be added to the Python application server. Python programming language has a variety of available modules, generating PDF and many other file formats. Some adaptation of third-party software modules might be required in order to accomplish this task.
 
 <div style="page-break-after: always;"></div>
 
