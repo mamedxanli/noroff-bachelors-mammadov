@@ -8,7 +8,14 @@ WORKDIR /app
 ADD . /app
 
 # Installing dependencies and specified software
-RUN apt-get update && apt-get install -y net-tools && apt-get install -y iputils-ping && apt-get install -y ssh && apt-get install -y vim && apt-get install -y rsyslog && apt-get install -y sqlite3 && apt-get install -y python3-pip
+RUN apt-get update
+RUN apt-get install -y net-tools 
+RUN apt-get install -y iputils-ping
+RUN apt-get install -y ssh
+RUN apt-get install -y vim
+RUN apt-get install -y rsyslog
+RUN apt-get install -y sqlite3
+RUN apt-get install -y python3-pip
 
 # Installing software specified in the file
 RUN pip3 install -r requirements.txt
