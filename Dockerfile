@@ -14,7 +14,6 @@ RUN apt-get install -y iputils-ping
 RUN apt-get install -y ssh
 RUN apt-get install -y vim
 RUN apt-get install -y rsyslog
-RUN apt-get install -y sqlite3
 RUN apt-get install -y python3-pip
 
 # Installing software specified in the file

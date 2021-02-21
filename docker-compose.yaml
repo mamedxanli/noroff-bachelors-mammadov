@@ -4,6 +4,7 @@ services:
         build: .
         hostname: honeypot
         container_name: honeypot
+        restart: always
         ports:
             - "2222:22"
         command: /bin/sh /app/hp_script.sh
@@ -11,6 +12,7 @@ services:
         image: grafana/grafana
         hostname: grafana
         container_name: grafana
+        restart: always
         env_file:
             - grafana-var.env
         ports:
@@ -19,5 +21,6 @@ services:
         image: influxdb
         hostname: influx
         container_name: influx
+        restart: always
         env_file:
            - db-var.env
